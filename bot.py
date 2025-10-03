@@ -2,7 +2,7 @@ import telebot
 import yt_dlp
 import os
 
-BOT_TOKEN = "TON_TOKEN_ICI"
+BOT_TOKEN = os.environ.get('BOT_TOKEN')  # On va mettre le token dans Railway
 bot = telebot.TeleBot(BOT_TOKEN)
 
 @bot.message_handler(commands=['start'])
@@ -38,4 +38,5 @@ def telecharger_video(message):
     except Exception as e:
         bot.reply_to(message, f"Erreur : {str(e)}")
 
+print("Bot démarré !")
 bot.infinity_polling()
